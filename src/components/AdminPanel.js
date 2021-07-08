@@ -6,6 +6,7 @@ const AdminPanel = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -15,6 +16,7 @@ const AdminPanel = () => {
   const handleSubmit = async (e) => {
     try {
       setLoading(true);
+      setError("");
       e.preventDefault();
       const { email, password } = admin;
 
@@ -27,12 +29,17 @@ const AdminPanel = () => {
         }
       );
       const data = await res.json();
+
       if (data.adminID) {
         setIsAdmin(true);
         setLoading(false);
+      } else if (data.status === "error") {
+        setLoading(false);
+        setError(data.error);
       }
     } catch (error) {
       console.log(error);
+      setError(error);
       setLoading(false);
     }
   };
@@ -68,6 +75,7 @@ const AdminPanel = () => {
           <button type="submit">Login</button>
         </div>
       </form>
+      {error && <p> {error}</p>}
       {loading && <p>Loading</p>}
     </div>
   );
