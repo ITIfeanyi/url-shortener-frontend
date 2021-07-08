@@ -60,7 +60,7 @@ const Analytics = () => {
           <h1>URL Information</h1>
         </span>
       </div>
-      {error && <div> {error} </div>}
+      {error && <p className="error"> {error} </p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"

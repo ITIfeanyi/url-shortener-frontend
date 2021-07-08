@@ -61,7 +61,7 @@ const ShortenURL = () => {
         </span>
       </div>
       <form onSubmit={handleSubmit}>
-        {error && <div> {error} </div>}
+        {error && <p className="error"> {error} </p>}
         <input
           type="text"
           placeholder="Paste a link"

@@ -58,6 +58,7 @@ const AdminPanel = () => {
             name="email"
             placeholder="Email"
             autoComplete="off"
+            required
             onChange={handleChange}
           />
         </div>
@@ -66,6 +67,7 @@ const AdminPanel = () => {
           <input
             type="password"
             name="password"
+            required
             placeholder="Password"
             onChange={handleChange}
           />
@@ -75,7 +77,7 @@ const AdminPanel = () => {
           <button type="submit">Login</button>
         </div>
       </form>
-      {error && <p> {error}</p>}
+      {error && <p className="error"> {error}</p>}
       {loading && <p>Loading</p>}
     </div>
   );

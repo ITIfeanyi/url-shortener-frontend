@@ -28,7 +28,7 @@ const Dashboard = () => {
         </Link>{" "}
       </div>
 
-      <div>{error && error} </div>
+      <div>{error && <p className="error">{error}</p>} </div>
       <div>
         {dashboardData ? (
           dashboardData.map((data) => {
