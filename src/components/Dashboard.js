@@ -38,6 +38,8 @@ const Dashboard = () => {
                 <p className="longurl">Long URL: {data.inputURL} </p>
                 <a
                   href={`https://powerful-lake-07951.herokuapp.com/${data.randomValue}`}
+                  rel="noreferrer"
+                  target="_blank"
                 >
                   Short URL{" "}
                   {`https://powerful-lake-07951.herokuapp.com/${data.randomValue}`}{" "}
