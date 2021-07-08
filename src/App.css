@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -58,4 +47,61 @@ input {
 
 a {
   background-color: rgb(207, 233, 230);
+}
+
+h3 {
+  color: rgb(15, 15, 34);
+}
+
+.card {
+  background-color: #fff;
+  max-width: 16rem;
+  margin: 1.5rem auto;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  box-shadow: -1px 1px 2px 2px #ccc;
+}
+.dashboard-card {
+  width: 80%;
+  margin: 2rem auto;
+  box-shadow: -1px 1px 2px 2px #ccc;
+  padding: 1rem;
+}
+.longurl {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 15rem;
+  margin: 0.7rem auto;
+  background-color: rgb(207, 233, 230);
+}
+
+@media (min-width: 600px) {
+  .dashboard-card {
+    max-width: 27rem;
+  }
+}
+
+.dashboard-header button {
+  margin-left: auto;
+}
+.shortnewurl {
+  text-decoration: none;
+  background-color: rgb(97, 97, 245);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+.input-label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.8rem 0;
+}
+label {
+  text-align: left;
+  padding: 0.3rem;
+}
+.admin-form {
+  max-width: 16rem;
+  margin: 2rem auto;
 }

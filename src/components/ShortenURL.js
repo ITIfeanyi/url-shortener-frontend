@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 const ShortenURL = () => {
   const [shortUrl, setShortUrl] = useState();
 
   const [longURL, setLongURL] = useState({ inputURL: "" });
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+  const handlePageChange = () => {
+    history.push("/analytic");
+  };
 
   const handleChange = (e) => {
     setLongURL({ ...longURL, [e.target.name]: e.target.value });
@@ -12,10 +19,11 @@ const ShortenURL = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const { inputURL } = longURL;
-      const res = await fetch("https://powerful-lake-07951.herokuapp.com", {
+      const res = await fetch("https://powerful-lake-07951.herokuapp.com/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ inputURL }),
@@ -23,6 +31,7 @@ const ShortenURL = () => {
       const data = await res.json();
 
       if (data.status === "success") {
+        setLoading(false);
         setLongURL({ inputURL: "" });
         setShortUrl(data.url);
       } else if (data.status === "error") {
@@ -32,11 +41,20 @@ const ShortenURL = () => {
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
   return (
     <div>
+      <div>
+        <Link to="/analytic">
+          <h3 onClick={handlePageChange}> View URL Analytics</h3>{" "}
+        </Link>
+        <Link to="/admin" className="shortnewurl">
+          <span>Login</span>
+        </Link>{" "}
+      </div>
       <div>
         <span>
           <h1>Url shortener</h1>
@@ -55,9 +73,10 @@ const ShortenURL = () => {
         <button type="submit">Shorten a URL.</button>
       </form>
 
+      {loading && <p>Loading</p>}
       {shortUrl && (
         <div>
-          <a href={shortUrl} rel="opener" target="_blank">
+          <a href={shortUrl} rel="noreferrer" target="_blank">
             {shortUrl}{" "}
           </a>
         </div>
