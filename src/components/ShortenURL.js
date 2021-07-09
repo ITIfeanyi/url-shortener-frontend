@@ -20,10 +20,11 @@ const ShortenURL = () => {
 
   const handleSubmit = async (e) => {
     setLoading(true);
+    setError("");
     e.preventDefault();
     try {
       const { inputURL } = longURL;
-      const res = await fetch("https://powerful-lake-07951.herokuapp.com/", {
+      const res = await fetch("https://powerful-lake-07951.herokuapp.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ inputURL }),
@@ -38,6 +39,7 @@ const ShortenURL = () => {
         setError(data.error);
         setLongURL({ inputURL: "" });
         setShortUrl();
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -76,7 +78,10 @@ const ShortenURL = () => {
       {loading && <p>Loading</p>}
       {shortUrl && (
         <div>
-          <a href={shortUrl} rel="noreferrer" target="_blank">
+          <a
+            href={`https://powerful-lake-07951.herokuapp.com/${shortUrl}`}
+            referrerPolicy="origin"
+          >
             {shortUrl}{" "}
           </a>
         </div>

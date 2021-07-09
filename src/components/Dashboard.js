@@ -38,8 +38,7 @@ const Dashboard = () => {
                 <p className="longurl">Long URL: {data.inputURL} </p>
                 <a
                   href={`https://powerful-lake-07951.herokuapp.com/${data.randomValue}`}
-                  rel="noreferrer"
-                  target="_blank"
+                  referrerPolicy="origin"
                 >
                   Short URL{" "}
                   {`https://powerful-lake-07951.herokuapp.com/${data.randomValue}`}{" "}
@@ -51,6 +50,7 @@ const Dashboard = () => {
                       <p>Device Type {userData.os} </p>
                       <p>Browser type: {userData.family} </p>
                       <p>Visitor's device: {userData.device} </p>
+                      <p>Referer {userData.referer} </p>
                     </div>
                   );
                 })}
