@@ -78,10 +78,7 @@ const ShortenURL = () => {
       {loading && <p>Loading</p>}
       {shortUrl && (
         <div>
-          <a
-            href={`https://powerful-lake-07951.herokuapp.com/${shortUrl}`}
-            referrerPolicy="origin"
-          >
+          <a href={`${shortUrl}`} referrerPolicy="origin">
             {shortUrl}{" "}
           </a>
         </div>
